@@ -1,0 +1,39 @@
+<!-- <p>invoice-list works!</p> -->
+<p class="invoices">Invoices</p>
+<mat-accordion multi="true">
+  <mat-expansion-panel *ngFor="let invoice of invoices">
+    <mat-expansion-panel-header *ngIf="invoice.status != 'Success'">
+      {{invoice.purpose}}
+    </mat-expansion-panel-header>
+    <!-- <div class="post-image">
+      <img [src]="post.imagePath" [alt]="post.title">
+    </div> -->
+    <p *ngIf="invoice.status != 'Success'">Amount: {{invoice.amount}}</p>
+    <mat-action-row *ngIf="invoice.status != 'Success'">
+
+      <button mat-raised-button color="primary" (click)="openPayment(invoice.redirect)" type="button">PAY NOW</button>
+      <!-- <button mat-button color="warn">DELETE</button> -->
+    </mat-action-row>
+    <!-- <mat-action-row *ngIf="userIsAuthenticated">
+      <a mat-button color="primary" [routerLink]="['/edit', post.id]">EDIT</a>
+      <button mat-button color="warn" (click)="onDelete(post.id)">DELETE</button>
+    </mat-action-row> -->
+  </mat-expansion-panel>
+</mat-accordion>
+
+<p class="payments">Payments</p>
+<mat-accordion multi="true">
+  <mat-expansion-panel *ngFor="let invoice of invoices">
+    <mat-expansion-panel-header *ngIf="invoice.status == 'Success'">
+      {{invoice.purpose}}
+    </mat-expansion-panel-header>
+    <!-- <div class="post-image">
+      <img [src]="post.imagePath" [alt]="post.title">
+    </div> -->
+    <p *ngIf="invoice.status == 'Success'">Amount: {{invoice.amount}}</p>
+    <!-- <mat-action-row *ngIf="userIsAuthenticated">
+      <a mat-button color="primary" [routerLink]="['/edit', post.id]">EDIT</a>
+      <button mat-button color="warn" (click)="onDelete(post.id)">DELETE</button>
+    </mat-action-row> -->
+  </mat-expansion-panel>
+</mat-accordion>
